@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "295811555070",
+    "project_id": "fintrac-cd45e",
+    "storage_bucket": "fintrac-cd45e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295811555070:android:faa1e7bbf6952bf6b04faf",
+        "android_client_info": {
+          "package_name": "com.example.fin_trac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295811555070-24t2s2m9l1lo1l4kkitli6gmfnm6b47k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fin_trac",
+            "certificate_hash": "ea0b611190574f91ffe30a969815735344690bd2"
+          }
+        },
+        {
+          "client_id": "295811555070-6ljk4temhphkbu5h7vo7oc397a432fv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fin_trac",
+            "certificate_hash": "8d5efaa3c819ec3619540821f55026b9df2650fd"
+          }
+        },
+        {
+          "client_id": "295811555070-nmpd9u5k1nh251vups7his75r4q4lpti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpYzs3C5bTW4d3iYmN78I2bmDu3sY63fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295811555070-nmpd9u5k1nh251vups7his75r4q4lpti.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
