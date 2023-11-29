@@ -12,13 +12,17 @@ class BudgetScreen extends StatefulWidget {
 class _BudgetScreenState extends State<BudgetScreen> {
   @override
   Widget build(BuildContext context) {
+    // Building a ListView with two items: BudgetCard and GoalsCard
     return ListView.builder(
       itemCount: 2,
       padding: EdgeInsets.only(top: mq.height * .02),
       itemBuilder: (context, index) {
+        // Displaying BudgetCard for the first item in the list
         if (index == 0) {
           return BudgetCard();
-        } else {
+        }
+        // Displaying GoalsCard for the second item in the list
+        else {
           return GoalsCard();
         }
       },

@@ -44,7 +44,11 @@ dependencies:
   google_sign_in: ^6.1.6
   #for firestore database
   cloud_firestore: ^4.13.2
+
+
   # for charts
+  # syncfusion_flutter_charts: ^23.2.6
+  # syncfusion_flutter_core: ^23.2.6
   # fl_chart: ^0.65.0
 
 dev_dependencies:

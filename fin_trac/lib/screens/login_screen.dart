@@ -1,7 +1,4 @@
-// import 'dart:math';
-
 import 'dart:io';
-
 import 'package:fin_trac/apis/apis.dart';
 import 'package:fin_trac/main.dart';
 import 'package:fin_trac/widgets/dialogs.dart';
@@ -20,8 +17,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool isAnimate = false;
 
+  @override
   void initState() {
     super.initState();
+    // Delay the animation to create a smoother entrance
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         isAnimate = true;
@@ -29,27 +28,34 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  _handlingGoogleButtonClick() {
-    //For showing progress bar
+  // Handling Google sign-in button click
+  void _handlingGoogleButtonClick() {
+    // Show progress bar while signing in with Google
     Dialogs.showProgressBar(context);
     _signInWithGoogle().then((user) {
-      //for removing progress bar
+      // Dismiss progress bar
       Navigator.pop(context);
 
+      // Navigate to the HomeScreen if sign-in is successful
       if (user != null) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+          context,
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
+        );
       }
     });
   }
 
+  // Asynchronous function to sign in with Google
   Future<UserCredential?> _signInWithGoogle() async {
     try {
+      // Check if there is an internet connection
       await InternetAddress.lookup('google.com');
-      // Trigger the authentication flow
+
+      // Trigger the Google sign-in flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-      // Obtain the auth details from the request
+      // Obtain the authentication details from the request
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
 
@@ -59,20 +65,21 @@ class _LoginScreenState extends State<LoginScreen> {
         idToken: googleAuth?.idToken,
       );
 
-      // Once signed in, return the UserCredential
+      // Sign in with the obtained credential and return the UserCredential
       return await APIs.auth.signInWithCredential(credential);
     } catch (e) {
-      print('\n google sign in error: ${e}');
+      // Handle errors during Google sign-in
+      print('\nGoogle sign-in error: ${e}');
       Dialogs.showSnackbar(
-          context, 'Something went Wrong ("Check internet connection!")');
+        context,
+        'Something went wrong (Check internet connection!)',
+      );
       return null;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // mq = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -80,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Stack(
         children: [
+          // AnimatedPositioned widget for the FinTrac logo animation
           AnimatedPositioned(
             top: mq.height * 0.15,
             right: isAnimate ? mq.width * 0.25 : -mq.width * 0.5,
@@ -87,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
             duration: const Duration(seconds: 1),
             child: Image.asset('images/icon.png'),
           ),
+          // Positioned widget for the Google sign-in button
           Positioned(
             bottom: mq.height * 0.15,
             left: mq.width * 0.05,
@@ -94,9 +103,10 @@ class _LoginScreenState extends State<LoginScreen> {
             height: mq.height * 0.06,
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 223, 255, 187),
-                  shape: StadiumBorder(),
-                  elevation: 1),
+                backgroundColor: Color.fromARGB(255, 223, 255, 187),
+                shape: StadiumBorder(),
+                elevation: 1,
+              ),
               onPressed: () {
                 _handlingGoogleButtonClick();
               },
@@ -110,8 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     TextSpan(text: 'Login with '),
                     TextSpan(
-                        text: 'Google',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                      text: 'Google',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),

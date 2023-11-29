@@ -1,11 +1,10 @@
-class UserGoal {
-  UserGoal({
+class UserAccount {
+  UserAccount({
     required this.id,
     required this.userId,
-    required this.goalId,
-    required this.totalAmount,
-    required this.savedAmount,
-    required this.desiredDate,
+    required this.accountId,
+    required this.amount,
+    required this.currency,
     required this.createdAt,
     required this.updatedAt,
     required this.isActive,
@@ -13,21 +12,19 @@ class UserGoal {
 
   late final id;
   late final userId;
-  late final goalId;
-  late final totalAmount;
-  late final savedAmount;
-  late final desiredDate;
+  late final accountId;
+  late final amount;
+  late final currency;
   late final createdAt;
   late final updatedAt;
   late final isActive;
 
-  UserGoal.fromJson(Map<String, dynamic> json) {
+  UserAccount.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['userId'];
-    goalId = json['goalId'];
-    totalAmount = json['totalAmount'];
-    savedAmount = json['savedAmount'];
-    desiredDate = json['desiredDate'];
+    accountId = json['accountId'];
+    amount = json['amount'];
+    currency = json['currency'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     isActive = json['isActive'];
@@ -37,10 +34,9 @@ class UserGoal {
     final data = Map<String, dynamic>();
     data['id'] = id;
     data['userId'] = userId;
-    data['goalId'] = goalId;
-    data['totalAmount'] = totalAmount;
-    data['savedAmount'] = savedAmount;
-    data['desiredDate'] = desiredDate;
+    data['accountId'] = accountId;
+    data['amount'] = amount;
+    data['currency'] = currency;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     data['isActive'] = isActive;
