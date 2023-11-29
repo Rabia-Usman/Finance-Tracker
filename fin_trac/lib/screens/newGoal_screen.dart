@@ -6,24 +6,30 @@ class NewGoalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // Close button in the app bar leading section
         leading: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              // Add logic for close button
-              Navigator.pop(context);
-            }),
+          icon: Icon(Icons.close),
+          onPressed: () {
+            // Logic for close button
+            Navigator.pop(context);
+          },
+        ),
+        // Title of the page
         title: Text('New Goal'),
+        // Action buttons in the app bar
         actions: [
           IconButton(
+            // Check button in the app bar
             icon: Icon(Icons.check),
             onPressed: () {
-              // Add logic for check button
-              Dialogs.showSnackbar(context, 'Goal added succesfully!');
+              // Logic for check button
+              Dialogs.showSnackbar(context, 'Goal added successfully!');
               Navigator.pop(context);
             },
           ),
         ],
       ),
+      // Body of the page
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -31,6 +37,7 @@ class NewGoalPage extends StatelessWidget {
           children: [
             SizedBox(height: 16.0),
             Text('Goal:'),
+            // Dropdown for selecting the goal type
             DropdownButton<String>(
               items: [
                 'Vehicle',
@@ -50,11 +57,12 @@ class NewGoalPage extends StatelessWidget {
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // Add logic for dropdown value change
+                // Logic for dropdown value change
               },
               hint: Text('Select Goal'),
             ),
             Text('Amount:'),
+            // Text field for entering the target amount
             TextField(
               decoration: InputDecoration(
                 hintText: 'Enter Target Amount',
@@ -62,6 +70,7 @@ class NewGoalPage extends StatelessWidget {
             ),
             SizedBox(height: 16.0),
             Text('Saved:'),
+            // Text field for entering the already saved amount
             TextField(
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -70,6 +79,7 @@ class NewGoalPage extends StatelessWidget {
             ),
             SizedBox(height: 16.0),
             Text('Desired Date:'),
+            // Text field for entering the desired date
             TextField(
               decoration: InputDecoration(
                 hintText: 'dd-mm-yyyy',

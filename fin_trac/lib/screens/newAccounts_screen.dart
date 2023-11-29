@@ -1,7 +1,7 @@
 import 'package:fin_trac/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 
-class NewBudgetPage extends StatelessWidget {
+class NewAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,13 +14,13 @@ class NewBudgetPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text('New Budget'),
+        title: Text('Manage Account'),
         actions: [
           IconButton(
             icon: Icon(Icons.check),
             onPressed: () {
               // Check button logic
-              Dialogs.showSnackbar(context, 'Budget added successfully!');
+              Dialogs.showSnackbar(context, 'Account added successfully!');
               Navigator.pop(context);
             },
           ),
@@ -32,43 +32,17 @@ class NewBudgetPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Budget Name:'),
-            // Text field for entering budget name
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter budget name',
-              ),
-            ),
             SizedBox(height: 16.0),
-            Text('Amount:'),
-            // Text field for entering the budget amount
-            TextField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: 'Enter amount',
-              ),
-            ),
-            SizedBox(height: 16.0),
-            Text('Period:'),
-            // Text field for entering the budget period
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter period',
-              ),
-            ),
-            SizedBox(height: 16.0),
-            Text('Category:'),
-            // Dropdown for selecting the budget category
+            Text('Account:'),
+            // Dropdown for selecting the account type
             DropdownButton<String>(
               items: [
-                'Food & Drink',
-                'Shopping',
-                'Housing',
-                'Transportation',
-                'Life & Entertainment',
-                'Communication',
-                'Investments',
-                'Other'
+                'Habib Bank',
+                'Meezan Bank',
+                'Jazz Cash',
+                'Easy Paisa',
+                'Sada Pay',
+                'Other',
               ].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -78,19 +52,31 @@ class NewBudgetPage extends StatelessWidget {
               onChanged: (String? newValue) {
                 // Logic for dropdown value change
               },
-              hint: Text('Select category'),
+              hint: Text('Select Account'),
             ),
             SizedBox(height: 16.0),
-            Text('Accounts:'),
-            // Dropdown for selecting the budget account
+            Text('Initial Amount:'),
+            // Text field for entering the initial amount
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter initial account value',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text('Currency:'),
+            // Text field for entering the currency
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter currency',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text('Currency:'),
+            // Dropdown for selecting the currency
             DropdownButton<String>(
               items: [
-                'Cash',
-                'Meezan Bank Ltd.',
-                'Habib Bank Ltd.',
-                'EasyPaisa',
-                'JazzCash',
-                'SadaPay'
+                'PKR',
+                'Other',
               ].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -99,8 +85,11 @@ class NewBudgetPage extends StatelessWidget {
               }).toList(),
               onChanged: (String? newValue) {
                 // Logic for dropdown value change
+                // setState(() {
+                //   selectedValue = newValue;
+                // });
               },
-              hint: Text('Select account'),
+              hint: Text('Select Currency'),
             ),
           ],
         ),

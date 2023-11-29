@@ -16,19 +16,21 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    // Delay the navigation to simulate a splash screen
     Future.delayed(const Duration(seconds: 2), () {
-      // exit full screen
+      // Exit full screen
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
       SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
+      // Check if a user is already authenticated
       if (APIs.auth.currentUser != null) {
         print('\nUser: ${APIs.auth.currentUser}');
-        // Navigate to login screen
+        // Navigate to the home screen
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const HomeScreen()));
       } else {
-        // Navigate to login screen
+        // Navigate to the login screen
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const LoginScreen()));
       }
@@ -36,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Widget build(BuildContext context) {
+    // Get the screen size
     mq = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -45,21 +48,24 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       body: Stack(
         children: [
+          // Positioned logo at the top-right corner
           Positioned(
             top: mq.height * 0.15,
             right: mq.width * 0.25,
             width: mq.width * 0.5,
             child: Image.asset('images/icon.png'),
           ),
+          // Positioned text at the bottom
           Positioned(
-              bottom: mq.height * 0.15,
-              width: mq.width * 0.9,
-              child: const Text(
-                'Made by Abdullah',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 20, color: Colors.green, letterSpacing: 1),
-              )),
+            bottom: mq.height * 0.15,
+            width: mq.width * 0.9,
+            child: const Text(
+              'Made by Abdullah',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20, color: Colors.green, letterSpacing: 1),
+            ),
+          ),
         ],
       ),
     );

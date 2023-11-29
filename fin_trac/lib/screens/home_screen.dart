@@ -18,10 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        // Drawer containing navigation options
         drawer: NavBar(),
         appBar: AppBar(
           title: const Text('FinTrac'),
           actions: [
+            // Notification icon in the app bar
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.notifications),
@@ -30,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: const Column(
           children: [
+            // TabBar for switching between "Accounts" and "Budgets & Goals"
             TabBar(
               tabs: [
                 Tab(
@@ -41,13 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
               labelColor: Colors.black,
             ),
+            // TabBarView containing the respective screens for each tab
             Expanded(
-                child: TabBarView(
-              children: [
-                AccountsScreen(),
-                BudgetScreen(),
-              ],
-            )),
+              child: TabBarView(
+                children: [
+                  // Screen for displaying accounts
+                  AccountsScreen(),
+                  // Screen for displaying budgets and goals
+                  BudgetScreen(),
+                ],
+              ),
+            ),
           ],
         ),
       ),

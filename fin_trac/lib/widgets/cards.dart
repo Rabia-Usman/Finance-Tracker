@@ -1,17 +1,16 @@
 import 'package:fin_trac/main.dart';
+import 'package:fin_trac/screens/newAccounts_screen.dart';
 import 'package:fin_trac/screens/newBudget_screen.dart';
 import 'package:fin_trac/screens/newGoal_screen.dart';
-// import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class BudgetCard extends StatelessWidget {
-  // const Card({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: mq.width * 0.04, vertical: 4),
-      elevation: 0.5,
+      // Card widget for creating a budget
+      margin: EdgeInsets.symmetric(horizontal: mq.width * 0.04, vertical: 10),
+      elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: InkWell(
         onTap: () {
@@ -36,17 +35,16 @@ class BudgetCard extends StatelessWidget {
 }
 
 class GoalsCard extends StatelessWidget {
-  // const Card({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: mq.width * 0.04, vertical: 4),
-      elevation: 0.5,
+      // Card widget for creating goals
+      margin: EdgeInsets.symmetric(horizontal: mq.width * 0.04, vertical: 10),
+      elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: InkWell(
         onTap: () {
-          // Use Navigator to navigate to the NewBudgetPage
+          // Use Navigator to navigate to the NewGoalPage
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => NewGoalPage()),
@@ -66,34 +64,91 @@ class GoalsCard extends StatelessWidget {
   }
 }
 
-// class AccountsCard extends StatefulWidget {
-//   @override
-//   _AccountsCardState createState() => _AccountsCardState();
-// }
+class AccountsCard extends StatefulWidget {
+  final String text;
+  final IconData icon;
 
-// class _AccountsCardState extends State<AccountsCard> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       color: Colors.yellow,
-//       child: Padding(
-//         padding: const EdgeInsets.all(15),
-//         child: InkWell(
-//           onTap: () {},
-//           child: ListTile(
-//             // leading: CircleAvatar(
-//             //   backgroundColor: Colors.transparent,
-//             //   child: Icon(Icons.add_circle_sharp, color: Colors.black),
-//             // ),
-//             title: Text('My Accounts'),
-//             // subtitle: Text(
-//             //     'Set your goals and have a quick overview of your progress.'),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  AccountsCard({required this.icon, required this.text});
+
+  @override
+  _AccountsCardState createState() => _AccountsCardState();
+}
+
+class _AccountsCardState extends State<AccountsCard> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to the new screen here
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => NewAccountPage()),
+        );
+      },
+      child: Card(
+        // Card widget for displaying accounts
+        elevation: 4.0,
+        margin: EdgeInsets.only(
+          top: 10.0,
+          bottom: 10.0,
+          left: 20.0,
+          right: 50.0,
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 6.0),
+          child: Row(
+            children: [
+              Icon(
+                widget.icon,
+                size: 24.0,
+                color: Colors.black,
+              ),
+              SizedBox(width: 16.0),
+              Text(
+                widget.text,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16.0),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HistoryCard extends StatefulWidget {
+  @override
+  _HistoryCardState createState() => _HistoryCardState();
+}
+
+class _HistoryCardState extends State<HistoryCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      // Card widget for displaying transaction history
+      color: const Color.fromARGB(255, 229, 224, 224),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '+ Cash 5000',
+              style: TextStyle(color: Colors.green),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              '- Bank 30000',
+              style: TextStyle(color: Colors.red),
+            ),
+            SizedBox(height: 16.0),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 // class PieChartCard extends StatefulWidget {
 //   @override
@@ -104,77 +159,26 @@ class GoalsCard extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Card(
-//       color: Colors.yellow,
-//       child: Padding(
-//         padding: const EdgeInsets.all(15),
-//         child: InkWell(
-//           onTap: () {},
-//           child: ListTile(
-//             // leading: CircleAvatar(
-//             //   backgroundColor: Colors.transparent,
-//             //   child: Icon(Icons.add_circle_sharp, color: Colors.black),
-//             // ),
-//             title: Text('Pie Chart'),
-//             // subtitle: Text(
-//             //     'Set your goals and have a quick overview of your progress.'),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class HistoryCard extends StatefulWidget {
-//   @override
-//   _HistoryCardState createState() => _HistoryCardState();
-// }
-
-// class _HistoryCardState extends State<HistoryCard> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       color: Colors.yellow,
-//       child: Padding(
-//         padding: const EdgeInsets.all(15),
-//         child: InkWell(
-//           onTap: () {},
-//           child: ListTile(
-//             // leading: CircleAvatar(
-//             //   backgroundColor: Colors.transparent,
-//             //   child: Icon(Icons.add_circle_sharp, color: Colors.black),
-//             // ),
-//             title: Text('History'),
-//             // subtitle: Text(
-//             //     'Set your goals and have a quick overview of your progress.'),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class LineChartCard extends StatefulWidget {
-//   @override
-//   _LineChartCardState createState() => _LineChartCardState();
-// }
-
-// class _LineChartCardState extends State<LineChartCard> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       color: Colors.yellow,
-//       child: Padding(
-//         padding: const EdgeInsets.all(15),
-//         child: InkWell(
-//           onTap: () {},
-//           child: ListTile(
-//             // leading: CircleAvatar(
-//             //   backgroundColor: Colors.transparent,
-//             //   child: Icon(Icons.add_circle_sharp, color: Colors.black),
-//             // ),
-//             title: Text('Line Chart'),
-//             // subtitle: Text(
-//             //     'Set your goals and have a quick overview of your progress.'),
+//       child: Scaffold(
+//         body: Center(
+//           child: Container(
+//             child: SfCircularChart(
+//               series: <CircularSeries>[
+//                 // Example series, you can customize this based on your data
+//                 DoughnutSeries<ChartData, String>(
+//                   dataSource: <ChartData>[
+//                     ChartData('Category A', 25),
+//                     ChartData('Category B', 35),
+//                     ChartData('Category C', 20),
+//                     ChartData('Category D', 10),
+//                     ChartData('Category E', 10),
+//                   ],
+//                   xValueMapper: (ChartData data, _) => data.category,
+//                   yValueMapper: (ChartData data, _) => data.value,
+//                   dataLabelSettings: DataLabelSettings(isVisible: true),
+//                 ),
+//               ],
+//             ),
 //           ),
 //         ),
 //       ),
