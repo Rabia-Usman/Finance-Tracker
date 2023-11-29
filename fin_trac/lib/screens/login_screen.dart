@@ -69,12 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  //sign out function
-  // _signOut() async {
-  //   await APIs.auth.signOut();
-  //   await GoogleSignIn().signOut();
-  // }
-
   @override
   Widget build(BuildContext context) {
     // mq = MediaQuery.of(context).size;
