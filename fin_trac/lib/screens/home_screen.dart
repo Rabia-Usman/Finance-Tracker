@@ -1,6 +1,4 @@
 import 'package:fin_trac/apis/apis.dart';
-import 'package:fin_trac/screens/accounts_screen.dart';
-import 'package:fin_trac/screens/budgetAndGoal_screen.dart';
 import 'package:fin_trac/screens/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -47,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
                 child: TabBarView(
               children: [
-                AccountsScreen(),
-                BudgetScreen(),
+                // AccountsScreen(),
+                // BudgetScreen(),
               ],
             )),
           ],

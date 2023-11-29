@@ -1,6 +1,4 @@
-import 'package:fin_trac/screens/home_screen.dart';
 import 'package:fin_trac/screens/splash_screen.dart';
-import 'package:fin_trac/widgets/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
